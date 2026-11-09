@@ -14,7 +14,7 @@ var (
 type Store interface {
 	CreateNote(ctx context.Context, title, content string) (*notesv1.Note, error)
 	GetNote(ctx context.Context, id string) (*notesv1.Note, error)
-	// GetNotes(context.Context, int32, string) ([]*notesv1.Note, string)
-	// UpdateNote(context.Context, string, string, string) *notesv1.Note
-	// DeleteNote(context.Context, string)
+	ListNotes(ctx context.Context, pageSize int32, offset int32) ([]*notesv1.Note, int32)
+	UpdateNote(ctx context.Context, note *notesv1.Note) (*notesv1.Note, error)
+	DeleteNote(ctx context.Context, id string)
 }
